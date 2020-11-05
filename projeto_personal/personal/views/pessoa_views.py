@@ -76,6 +76,7 @@ def editar_pessoa(request, id_pessoa):
     endereco_antigo = endereco_service.listar_endereco_id(endereco_id, tipo_endereco)
     form_pessoa = PessoaForm(request.POST or None, instance=pessoa_antiga)
     form_endereco = EnderecoForm(request.POST or None, instance=pessoa_antiga)
+
     if form_pessoa.is_valid():
         pessoa_nova = retorna_pessoa(form_pessoa)
         if form_endereco.is_valid():
@@ -83,6 +84,7 @@ def editar_pessoa(request, id_pessoa):
             pessoa_service.editar_pessoa(pessoa=pessoa_antiga, pessoa_nova=pessoa_nova)
             endereco_service.editar_endereco(endereco=endereco_antigo, endereco_novo=endereco_novo)
             return redirect('listar_clientes')
+            
     return render(request, 'pessoas/form_pessoa.html', {'form_pessoa': form_pessoa, 'form_endereco': form_endereco})
 
 
