@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load meus_filtros %}
+{% load static %}
+
+{% block content %}
+
+ <h1>Pessoas</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th> Nome</th>
+            <th> Data Nascimento</th>
+            <th> Sexo</th>
+            <th> E-mail</th>
+        </tr>
+    </thead>
+    <tbody>
+        {%for i in pessoas %}
+            <tr>
+                <td> <a href="{% url 'listar_pessoa_id' i.id_pessoa %}"> {{i.nome}}</a> </td>
+                <<td>{{i.data_nascimento | date:"d M Y"}}</td>
+                <td> {{i.sexo}} </td>
+                <td> {{i.email}} </td>
+                <td>
+                    <a href="{% url 'editar_pessoa' i.id_pessoa %}">Editar</a>
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+</body>
+</html>
+{% endblock content %}
