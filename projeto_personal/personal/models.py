@@ -14,7 +14,7 @@ class Pessoa(AbstractBaseUser):
     )
 
     id_pessoa = models.AutoField(primary_key=True)
-    nome = models.CharField(max_length=100, null=False, blank=False)
+    nome = models.CharField(max_length=150, null=False, blank=False)
     cpf = models.CharField(max_length=14, null=False, blank=False)
     data_nascimento = models.DateField(null=False, blank=False)
     data_cadastro = models.DateField(default=timezone.now)
